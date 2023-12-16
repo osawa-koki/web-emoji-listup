@@ -12,11 +12,11 @@ interface Emoji {
 
 const emojis: Emoji[] = []
 
-for (let i = 0x1F000; i <= 0x1F900; i++) {
+for (let i = 0x1F000; i <= 0x1FAFF; i++) {
   emojis.push({
     char: String.fromCodePoint(i),
     unicode: `U+${i.toString(16).toLocaleUpperCase()}`,
-    html: `&#x${i.toString(16)}`
+    html: `&#x${i.toString(16)};`
   })
 }
 
