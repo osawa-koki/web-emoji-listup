@@ -1,7 +1,8 @@
 import React from 'react'
 import Image from 'next/image'
-import setting from '../setting'
 import { Card } from 'react-bootstrap'
+import { toast } from 'react-toastify'
+import setting from '../setting'
 
 interface Emoji {
   char: string
@@ -11,11 +12,11 @@ interface Emoji {
 
 const emojis: Emoji[] = []
 
-for (let i = 0x1F000; i <= 0x1F900; i++) {
+for (let i = 0x1F000; i <= 0x1FAFF; i++) {
   emojis.push({
     char: String.fromCodePoint(i),
-    unicode: i.toString(16),
-    html: `&#x${i.toString(16)}`
+    unicode: `U+${i.toString(16).toLocaleUpperCase()}`,
+    html: `&#x${i.toString(16)};`
   })
 }
 
@@ -38,6 +39,13 @@ export default function Home (): React.JSX.Element {
           onMouseOver={(event) => { event.currentTarget.classList.add('shadow-lg') }}
           onMouseOut={(event) => { event.currentTarget.classList.remove('shadow-lg') }}
           role='button'
+          // eslint-disable-next-line @typescript-eslint/no-misused-promises
+          onClick={async () => {
+            await navigator.clipboard.writeText(emoji.char)
+            toast.success(<div className='d-flex justify-content-center align-items-center'>
+              Copied! <span className='text-primary mx-2' style={{ fontSize: '1.5rem' }}>{emoji.char}</span> <span style={{ fontSize: '0.7rem' }}>({emoji.unicode} | {emoji.html})</span>
+            </div>)
+          }}
           >
             {emoji.char}
           </Card>
