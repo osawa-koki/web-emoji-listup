@@ -2,6 +2,9 @@
 
 🤷🤷🤷 絵文字の一覧をWeb上でリストアップするアプリです！  
 
+[![ci](https://github.com/osawa-koki/web-emoji-listup/actions/workflows/ci.yml/badge.svg)](https://github.com/osawa-koki/web-emoji-listup/actions/workflows/ci.yml)
+[![cd](https://github.com/osawa-koki/web-emoji-listup/actions/workflows/cd.yml/badge.svg)](https://github.com/osawa-koki/web-emoji-listup/actions/workflows/cd.yml)
+
 ## 実行方法
 
 ```shell
